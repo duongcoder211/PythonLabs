@@ -1,5 +1,5 @@
 # Функция, которую будем тестировать
-def guess_number(target : int, lst, type = "seq") -> list[int | None]:
+def guess_number(target : int, lst, type = "seq") -> list[int, int | None]:
     # Сортировать список
     lst = sorted(lst)
     # Декларция переменной расчет количества выполнения цикла
@@ -9,7 +9,7 @@ def guess_number(target : int, lst, type = "seq") -> list[int | None]:
         # Найти target с помощью цикла for (алгоритма медленного перебора (инкремента))
         for i in lst:
             round += 1
-            if i == target:
+            if int(i) == target:
                 # Сообщение о количестве выполнения цикла и методе поиска
                 # print("Number", target, "was found in the list after", round, "round" if round == 1 else "rounds", "by method", type)
                 return [i, target]

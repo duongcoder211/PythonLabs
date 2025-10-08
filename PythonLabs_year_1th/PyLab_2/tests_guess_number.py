@@ -24,7 +24,9 @@ class TestMath(unittest.TestCase):
     def test_guess_number_one_element(self):
         self.assertEqual(guess_number(8, [8]), [8,8])
         
-# # Запуск тестов
+    def test_guess_number_big_small_elements(self):
+        self.assertEqual(guess_number(8, [200,150,8,7,6,5,4]), [8,8])
+# Запуск тестов
 unittest.main(argv=[''], verbosity=2, exit=False)
 
 
