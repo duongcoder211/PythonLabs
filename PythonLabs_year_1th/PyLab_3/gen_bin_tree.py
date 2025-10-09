@@ -3,6 +3,17 @@ from left_branch import left_branch
 from right_branch import right_branch
 
 def gen_bin_tree(height, root) -> list:
+    """
+    Ввод значений корни и высоты для cоздания бинарного дерева,
+    по которому мы ищем бинарного дерева в виде словаря
+    
+    __вызов функции gen_bin_tree с параметрами: __
+      - высоты (height)
+      - корень (root)
+      
+    __вывод результатов на экран__
+    :return:
+    """
     # Установка условии закончения рекурции
     if(height == 0):
         # Создание новый пустой словарь
