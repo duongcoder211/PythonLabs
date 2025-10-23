@@ -33,7 +33,7 @@ def main():
     
     # Визуализация
     fig, axs = plt.subplots(2, 2, figsize=(14, 8))
-    fig.suptitle("Сравнение рекурсивной и итеративной генерации бинарного дерева\n(при root = 10)")
+    fig.suptitle("Сравнение рекурсивной и итеративной генерации бинарного дерева\n(при root = 6)")
 
     axs[0, 0].plot(test_data, res_recursive, label="Рекурсивный")
     axs[0, 0].plot(test_data, res_iterative, label="Итеративный")
