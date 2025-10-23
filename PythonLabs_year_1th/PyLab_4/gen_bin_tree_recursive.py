@@ -2,7 +2,7 @@ from collections import defaultdict
 from left_branch import left_branch
 from right_branch import right_branch
 
-def gen_bin_tree(height, root) -> list:
+def gen_bin_tree_recursive(height = 5, root = 6) -> list:
     """
     Ввод значений корни и высоты для cоздания бинарного дерева
     ,по которому мы ищем бинарного дерева в виде словаря 
@@ -29,6 +29,6 @@ def gen_bin_tree(height, root) -> list:
     # Создание новый пустой словарь
     bin_tree = defaultdict()
     # Присвоение текущего корни с списком 2 новых ветки
-    bin_tree[str(root)] = [gen_bin_tree(height-1, l_b), gen_bin_tree(height-1, r_b)]
+    bin_tree[str(root)] = [gen_bin_tree_recursive(height-1, l_b), gen_bin_tree_recursive(height-1, r_b)]
     # Приведение типа данных collections.defaultdict в словарь и возвращение бинарного дерева
     return dict(bin_tree)
