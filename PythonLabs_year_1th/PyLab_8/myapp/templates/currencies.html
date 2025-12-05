@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currencies</title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="app_name"><a href="/">{{myapp_name}}</a></h1>
+    <h2 class="name_page">Currencies page</h2>
+    <h3 class="currency_date">Date: {{currency_date}}</h3>
+<!--    <ul type="none">-->
+<!--        <li class="currency_id">Currency ID: {{currency_id}}</li>-->
+<!--        <li class="currency_num_code">Currency numcode: {{currency_num_code}}</li>-->
+<!--        <li class="currency_char_code">Currency charcode: {{currency_char_code}}</li>-->
+<!--        <li class="currency_name">Currency name: {{currency_name}}</li>-->
+<!--        <li class="currency_value">Currency value: {{currency_value}}</li>-->
+<!--        <li class="currency_nominal">Currency nominal: {{currency_nominal}}</li>-->
+<!--    </ul>-->
+    {% for currency in currencies %}
+        <ul type="none" content="{{currency.name}}">
+            <li class="currency_id">Currency ID: {{currency.id}}</li>
+            <li class="currency_num_code">Currency numcode: {{currency.num_code}}</li>
+            <li class="currency_char_code">Currency charcode: {{currency.char_code}}</li>
+            <li class="currency_name">Currency name: {{currency.name}}</li>
+            <li class="currency_value">Currency value: {{currency.value}}</li>
+            <li class="currency_nominal">Currency nominal: {{currency.nominal}}</li>
+        </ul>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <title>Course chart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1 class="app_name"><a href="/">{{myapp_name}}</a></h1>
+    <h2 class="name_page">Course chart page</h2>
+
+     <form id="myForm" action="/course" method="GET">
+        <label for="selection">Введите код валюты</label>
+        <input type="text" id="selection" name="valute" required>
+        <button type="submit" id="choose-btn">Выбрать</button>
+     </form>
+
+    <div class="loading-container mb-3" style="position: relative; margin: 0 auto; width: fit-content; height: 30px">
+        <div style="color: {{color_res}}; font-size: 20px">{{message}}</div>
+        <!--        <div class="d-flex align-items-center">-->
+        <!--          <div class="spinner-border ml-auto mb-2" role="status" aria-hidden="true" style="margin: 0 auto"></div>-->
+        <!--        </div>-->
+        <!--        <strong style="display:block">Loading...</strong>-->
+    </div>
+
+    <div class="chart-container" style="position: relative; height:80vh; width:80vw; margin: 0 auto">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        let serverData = "{{dayList}}";
+
+        let matches = serverData.match(/&#39;(.*?)&#39;/g);
+        let dayList = matches ? matches.map(m =>
+            m.replace(/&#39;|&#39;/g, '')
+        ) : [];
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                // <!--      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],-->
+                labels: dayList,
+                datasets: [{
+                    label: 'Курс валюты за 3 последних месяца',
+                    // <!--        data: [12, 19, 3, 5, 2, 3],-->
+                    data: {{valList}},
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "day/month/year"
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Value ({{valute_name}})"
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
