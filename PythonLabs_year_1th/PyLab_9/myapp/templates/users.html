@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currencies</title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <span><a href="/">Home</a></span>
+    <h1 class="app_name">{{myapp_name}}</h1>
+    <h2 class="name_page">Users page</h2>
+    <h4>Пользователи</h4>
+    <div style="color:{{msg_color}}">{{msg}}</div>
+    <table id="currencies">
+        <tr class="text-center">
+            <td>ID</td><td>Name</td>
+        </tr>
+    {% for item in users %}
+        <tr>
+            <td>{{ item.id }}</td><td>{{ item.name }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
